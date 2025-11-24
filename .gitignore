@@ -1,0 +1,6 @@
+# API 서비스키 설정 파일 (보안)
+config.js
+
+# 기타
+.DS_Store
+node_modules/

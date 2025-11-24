@@ -4,221 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>만세력 계산기</title>
+    <script src="config.js"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Malgun Gothic', sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 40px;
-            font-size: 24px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #666;
-            font-size: 14px;
-            font-weight: bold;
-        }
-        
-        input, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        
-        input:focus, select:focus {
-            outline: none;
-            border-color: #4CAF50;
-        }
-        
-        .date-group {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 10px;
-        }
-        
-        .time-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-        }
-        
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 15px;
-            background: #f8f9fa;
-            border-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            margin: 0;
-            cursor: pointer;
-        }
-        
-        .checkbox-group label {
-            margin: 0;
-            font-weight: normal;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        
-        button {
-            width: 100%;
-            padding: 15px;
-            background: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 30px;
-        }
-        
-        button:hover {
-            background: #45a049;
-        }
-        
-        .help-text {
-            font-size: 12px;
-            color: #999;
-            margin-top: 5px;
-        }
-        
-        .help-text a {
-            color: #4CAF50;
-            font-weight: bold;
-            text-decoration: none;
-        }
-        
-        .help-text a:hover {
-            text-decoration: underline;
-        }
-        
-        .time-table {
-            margin-top: 10px;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 5px;
-            font-size: 13px;
-            line-height: 1.8;
-        }
-        
-        .time-table h4 {
-            margin-bottom: 10px;
-            color: #333;
-        }
-        
-        .result {
-            margin-top: 40px;
-            padding: 30px;
-            background: #f9f9f9;
-            border-radius: 10px;
-            display: none;
-        }
-        
-        .result.show {
-            display: block;
-        }
-        
-        .result h2 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 20px;
-        }
-        
-        .result-info {
-            text-align: center;
-            margin-bottom: 30px;
-            color: #666;
-            font-size: 14px;
-        }
-        
-        .saju-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        .saju-table th {
-            background: #4CAF50;
-            color: white;
-            padding: 12px;
-            font-size: 14px;
-            font-weight: bold;
-            text-align: center;
-        }
-        
-        .saju-table td {
-            padding: 15px;
-            text-align: center;
-            border: 1px solid #e0e0e0;
-            font-size: 16px;
-        }
-        
-        .pillar-label {
-            background: #f5f5f5;
-            font-weight: bold;
-            color: #666;
-        }
-        
-        .stem {
-            font-size: 24px;
-            font-weight: bold;
-            color: #d32f2f;
-        }
-        
-        .branch {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1976d2;
-        }
-        
-        .element {
-            font-size: 13px;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .sipsung {
-            font-size: 12px;
-            color: #888;
-            margin-top: 3px;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Malgun Gothic', sans-serif; background: #f5f5f5; padding: 20px; }
+        .container { max-width: 700px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; margin-bottom: 40px; font-size: 24px; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; font-weight: bold; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; font-size: 16px; }
+        input:focus, select:focus { outline: none; border-color: #4CAF50; }
+        .date-group { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px; }
+        .time-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .checkbox-group { display: flex; align-items: center; gap: 8px; padding: 12px 15px; background: #f8f9fa; border-radius: 5px; margin-bottom: 10px; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin: 0; cursor: pointer; }
+        .checkbox-group label { margin: 0; font-weight: normal; cursor: pointer; white-space: nowrap; }
+        button { width: 100%; padding: 15px; background: #4CAF50; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; margin-top: 30px; }
+        button:hover { background: #45a049; }
+        button:disabled { background: #ccc; cursor: not-allowed; }
+        .help-text { font-size: 12px; color: #999; margin-top: 5px; }
+        .help-text a { color: #4CAF50; font-weight: bold; text-decoration: none; }
+        .help-text a:hover { text-decoration: underline; }
+        .time-table { margin-top: 10px; padding: 15px; background: #f9f9f9; border-radius: 5px; font-size: 13px; line-height: 1.8; }
+        .time-table h4 { margin-bottom: 10px; color: #333; }
+        .result { margin-top: 40px; padding: 30px; background: #f9f9f9; border-radius: 10px; display: none; }
+        .result.show { display: block; }
+        .result h2 { text-align: center; color: #333; margin-bottom: 20px; font-size: 20px; }
+        .result-info { text-align: center; margin-bottom: 30px; color: #666; font-size: 14px; }
+        .saju-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .saju-table th { background: #4CAF50; color: white; padding: 12px; font-size: 14px; font-weight: bold; text-align: center; }
+        .saju-table td { padding: 15px; text-align: center; border: 1px solid #e0e0e0; font-size: 16px; }
+        .pillar-label { background: #f5f5f5; font-weight: bold; color: #666; }
+        .stem { font-size: 24px; font-weight: bold; color: #d32f2f; }
+        .branch { font-size: 24px; font-weight: bold; color: #1976d2; }
+        .element { font-size: 13px; color: #666; margin-top: 5px; }
+        .sipsung { font-size: 12px; color: #888; margin-top: 3px; }
+        .loading { text-align: center; padding: 20px; color: #666; }
+        .error { text-align: center; padding: 20px; color: #d32f2f; background: #ffebee; border-radius: 5px; margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -305,8 +127,11 @@
                 유시(酉時) 17:30~19:29 | 술시(戌時) 19:30~21:29 | 해시(亥時) 21:30~23:29
             </div>
             
-            <button type="submit">사주팔자 계산하기</button>
+            <button type="submit" id="submitBtn">사주팔자 계산하기</button>
         </form>
+        
+        <div id="loadingMsg" class="loading" style="display:none;">절기 정보를 불러오는 중...</div>
+        <div id="errorMsg" class="error" style="display:none;"></div>
         
         <div class="result" id="result">
             <h2>사주팔자 결과</h2>
@@ -331,6 +156,13 @@
                         <td class="stem" id="yearStem">-</td>
                     </tr>
                     <tr>
+                        <td class="pillar-label">십성(천간)</td>
+                        <td class="sipsung" id="hourStemSipsung">-</td>
+                        <td class="sipsung">비견</td>
+                        <td class="sipsung" id="monthStemSipsung">-</td>
+                        <td class="sipsung" id="yearStemSipsung">-</td>
+                    </tr>
+                    <tr>
                         <td class="pillar-label">지지</td>
                         <td class="branch" id="hourBranch">-</td>
                         <td class="branch" id="dayBranch">-</td>
@@ -338,18 +170,11 @@
                         <td class="branch" id="yearBranch">-</td>
                     </tr>
                     <tr>
-                        <td class="pillar-label">오행</td>
-                        <td class="element" id="hourElement">-</td>
-                        <td class="element" id="dayElement">-</td>
-                        <td class="element" id="monthElement">-</td>
-                        <td class="element" id="yearElement">-</td>
-                    </tr>
-                    <tr>
-                        <td class="pillar-label">십성</td>
-                        <td class="sipsung" id="hourSipsung">-</td>
-                        <td class="sipsung">일간</td>
-                        <td class="sipsung" id="monthSipsung">-</td>
-                        <td class="sipsung" id="yearSipsung">-</td>
+                        <td class="pillar-label">십성(지지)</td>
+                        <td class="sipsung" id="hourBranchSipsung">-</td>
+                        <td class="sipsung" id="dayBranchSipsung">-</td>
+                        <td class="sipsung" id="monthBranchSipsung">-</td>
+                        <td class="sipsung" id="yearBranchSipsung">-</td>
                     </tr>
                     <tr>
                         <td class="pillar-label">12운성</td>
@@ -366,96 +191,517 @@
     <script>
         // 지역별 도시 데이터
         const regionData = {
-            '서울특별시': [{name: '서울', offset: -2}],
+            '서울특별시': [{name: '서울', lng: 127.0, offset: -32}],
             '경기도': [
-                {name: '가평', offset: 2}, {name: '고양', offset: -3}, {name: '과천', offset: -3},
-                {name: '광명', offset: -3}, {name: '광주', offset: -1}, {name: '구리', offset: -2},
-                {name: '군포', offset: -3}, {name: '김포', offset: -4}, {name: '남양주', offset: -2},
-                {name: '동두천', offset: -2}, {name: '부천', offset: -3}, {name: '성남', offset: -2},
-                {name: '수원', offset: -2}, {name: '시흥', offset: -3}, {name: '안산', offset: -3},
-                {name: '안성', offset: -2}, {name: '안양', offset: -3}, {name: '양주', offset: -2},
-                {name: '양평', offset: -1}, {name: '여주', offset: 0}, {name: '연천', offset: -2},
-                {name: '오산', offset: -2}, {name: '용인', offset: -2}, {name: '의왕', offset: -3},
-                {name: '의정부', offset: -2}, {name: '이천', offset: -2}, {name: '파주', offset: -3},
-                {name: '평택', offset: -3}, {name: '포천', offset: -2}, {name: '하남', offset: -2},
-                {name: '화성', offset: -3}
+                {name: '가평', lng: 127.51, offset: -30}, {name: '고양', lng: 126.83, offset: -33},
+                {name: '과천', lng: 127.0, offset: -32}, {name: '광명', lng: 126.87, offset: -33},
+                {name: '광주', lng: 127.26, offset: -31}, {name: '구리', lng: 127.14, offset: -31},
+                {name: '군포', lng: 126.94, offset: -32}, {name: '김포', lng: 126.72, offset: -33},
+                {name: '남양주', lng: 127.22, offset: -31}, {name: '동두천', lng: 127.06, offset: -32},
+                {name: '부천', lng: 126.78, offset: -33}, {name: '성남', lng: 127.14, offset: -31},
+                {name: '수원', lng: 127.0, offset: -32}, {name: '시흥', lng: 126.8, offset: -33},
+                {name: '안산', lng: 126.83, offset: -33}, {name: '안성', lng: 127.28, offset: -31},
+                {name: '안양', lng: 126.95, offset: -32}, {name: '양주', lng: 127.05, offset: -32},
+                {name: '양평', lng: 127.49, offset: -30}, {name: '여주', lng: 127.64, offset: -29},
+                {name: '연천', lng: 127.07, offset: -32}, {name: '오산', lng: 127.07, offset: -32},
+                {name: '용인', lng: 127.18, offset: -31}, {name: '의왕', lng: 126.97, offset: -32},
+                {name: '의정부', lng: 127.03, offset: -32}, {name: '이천', lng: 127.44, offset: -30},
+                {name: '파주', lng: 126.78, offset: -33}, {name: '평택', lng: 127.09, offset: -32},
+                {name: '포천', lng: 127.2, offset: -31}, {name: '하남', lng: 127.21, offset: -31},
+                {name: '화성', lng: 126.83, offset: -33}
             ],
             '인천광역시': [
-                {name: '강화', offset: -5}, {name: '계양구', offset: -4}, {name: '교동도', offset: -6},
-                {name: '남동구', offset: -4}, {name: '동구', offset: -4}, {name: '부평구', offset: -4},
-                {name: '서구', offset: -4}, {name: '석모도', offset: -5}, {name: '연수구', offset: -4},
-                {name: '영종도', offset: -5}, {name: '영흥도', offset: -5}, {name: '인천', offset: -4},
-                {name: '중구', offset: -4}
+                {name: '강화', lng: 126.49, offset: -34}, {name: '계양구', lng: 126.74, offset: -33},
+                {name: '남동구', lng: 126.73, offset: -33}, {name: '동구', lng: 126.65, offset: -33},
+                {name: '부평구', lng: 126.72, offset: -33}, {name: '서구', lng: 126.68, offset: -33},
+                {name: '연수구', lng: 126.68, offset: -33}, {name: '영종도', lng: 126.49, offset: -34},
+                {name: '인천', lng: 126.71, offset: -33}, {name: '중구', lng: 126.62, offset: -34}
             ],
             '강원도': [
-                {name: '강릉', offset: 5}, {name: '고성', offset: 3}, {name: '동해', offset: 6},
-                {name: '삼척', offset: 5}, {name: '속초', offset: 4}, {name: '양양', offset: 4},
-                {name: '영월', offset: 6}, {name: '원주', offset: 1}, {name: '인제', offset: 3},
-                {name: '정선', offset: 4}, {name: '철원', offset: -1}, {name: '춘천', offset: 1},
-                {name: '태백', offset: 5}, {name: '평창', offset: 5}, {name: '홍천', offset: 2},
-                {name: '화천', offset: 1}
+                {name: '강릉', lng: 128.9, offset: -24}, {name: '고성', lng: 128.47, offset: -26},
+                {name: '동해', lng: 129.11, offset: -24}, {name: '삼척', lng: 129.17, offset: -23},
+                {name: '속초', lng: 128.59, offset: -26}, {name: '양양', lng: 128.62, offset: -25},
+                {name: '영월', lng: 128.46, offset: -26}, {name: '원주', lng: 127.95, offset: -28},
+                {name: '인제', lng: 128.17, offset: -27}, {name: '정선', lng: 128.66, offset: -25},
+                {name: '철원', lng: 127.31, offset: -31}, {name: '춘천', lng: 127.73, offset: -29},
+                {name: '태백', lng: 128.99, offset: -24}, {name: '평창', lng: 128.39, offset: -26},
+                {name: '홍천', lng: 127.89, offset: -28}, {name: '화천', lng: 127.71, offset: -29}
             ],
             '충청남도': [
-                {name: '공주', offset: -3}, {name: '금산', offset: 1}, {name: '논산', offset: -2},
-                {name: '당진', offset: -5}, {name: '보령', offset: -6}, {name: '부여', offset: -3},
-                {name: '서산', offset: -6}, {name: '서천', offset: -4}, {name: '아산', offset: -3},
-                {name: '예산', offset: -4}, {name: '천안', offset: -2}, {name: '청양', offset: -4},
-                {name: '태안', offset: -5}, {name: '홍성', offset: -5}
+                {name: '공주', lng: 127.12, offset: -32}, {name: '금산', lng: 127.49, offset: -30},
+                {name: '논산', lng: 127.1, offset: -32}, {name: '당진', lng: 126.63, offset: -33},
+                {name: '보령', lng: 126.61, offset: -34}, {name: '부여', lng: 126.91, offset: -32},
+                {name: '서산', lng: 126.45, offset: -34}, {name: '서천', lng: 126.69, offset: -33},
+                {name: '아산', lng: 127.0, offset: -32}, {name: '예산', lng: 126.85, offset: -33},
+                {name: '천안', lng: 127.15, offset: -31}, {name: '청양', lng: 126.8, offset: -33},
+                {name: '태안', lng: 126.3, offset: -35}, {name: '홍성', lng: 126.66, offset: -33}
             ],
             '충청북도': [
-                {name: '괴산', offset: 3}, {name: '단양', offset: 2}, {name: '보은', offset: 0},
-                {name: '영동', offset: 1}, {name: '옥천', offset: 0}, {name: '음성', offset: 0},
-                {name: '제천', offset: 2}, {name: '증평', offset: 0}, {name: '진천', offset: -1},
-                {name: '청주', offset: 0}, {name: '충주', offset: 1}
+                {name: '괴산', lng: 127.79, offset: -29}, {name: '단양', lng: 128.37, offset: -27},
+                {name: '보은', lng: 127.73, offset: -29}, {name: '영동', lng: 127.78, offset: -29},
+                {name: '옥천', lng: 127.57, offset: -30}, {name: '음성', lng: 127.69, offset: -29},
+                {name: '제천', lng: 128.19, offset: -27}, {name: '증평', lng: 127.58, offset: -30},
+                {name: '진천', lng: 127.44, offset: -30}, {name: '청주', lng: 127.49, offset: -30},
+                {name: '충주', lng: 127.93, offset: -28}
             ],
-            '대전광역시': [{name: '대전', offset: 0}],
-            '세종특별자치시': [{name: '세종', offset: -1}],
+            '대전광역시': [{name: '대전', lng: 127.38, offset: -30}],
+            '세종특별자치시': [{name: '세종', lng: 127.29, offset: -31}],
             '전라남도': [
-                {name: '강진', offset: 4}, {name: '고흥', offset: 3}, {name: '곡성', offset: 3},
-                {name: '광양', offset: 5}, {name: '구례', offset: 3}, {name: '나주', offset: -2},
-                {name: '담양', offset: 3}, {name: '목포', offset: -5}, {name: '무안', offset: -5},
-                {name: '보성', offset: 2}, {name: '순천', offset: 4}, {name: '신안', offset: -6},
-                {name: '여수', offset: 6}, {name: '영광', offset: 5}, {name: '영암', offset: -2},
-                {name: '완도', offset: 5}, {name: '장성', offset: 5}, {name: '장흥', offset: 4},
-                {name: '진도', offset: 6}, {name: '함평', offset: 4}, {name: '해남', offset: 4},
-                {name: '화순', offset: 2}
+                {name: '강진', lng: 126.77, offset: -33}, {name: '고흥', lng: 127.28, offset: -31},
+                {name: '곡성', lng: 127.29, offset: -31}, {name: '광양', lng: 127.59, offset: -30},
+                {name: '구례', lng: 127.46, offset: -30}, {name: '나주', lng: 126.71, offset: -33},
+                {name: '담양', lng: 126.99, offset: -32}, {name: '목포', lng: 126.39, offset: -34},
+                {name: '무안', lng: 126.48, offset: -34}, {name: '보성', lng: 127.08, offset: -32},
+                {name: '순천', lng: 127.49, offset: -30}, {name: '신안', lng: 126.11, offset: -36},
+                {name: '여수', lng: 127.66, offset: -29}, {name: '영광', lng: 126.51, offset: -34},
+                {name: '영암', lng: 126.7, offset: -33}, {name: '완도', lng: 126.76, offset: -33},
+                {name: '장성', lng: 126.78, offset: -33}, {name: '장흥', lng: 126.91, offset: -32},
+                {name: '진도', lng: 126.26, offset: -35}, {name: '함평', lng: 126.52, offset: -34},
+                {name: '해남', lng: 126.6, offset: -34}, {name: '화순', lng: 127.0, offset: -32}
             ],
             '전라북도': [
-                {name: '고창', offset: 3}, {name: '군산', offset: -4}, {name: '김제', offset: -2},
-                {name: '남원', offset: 5}, {name: '무주', offset: 3}, {name: '부안', offset: 6},
-                {name: '순창', offset: 2}, {name: '완주', offset: 5}, {name: '익산', offset: -2},
-                {name: '임실', offset: 2}, {name: '장수', offset: 3}, {name: '전주', offset: 1},
-                {name: '정읍', offset: 2}, {name: '진안', offset: 2}
+                {name: '고창', lng: 126.7, offset: -33}, {name: '군산', lng: 126.74, offset: -33},
+                {name: '김제', lng: 126.88, offset: -32}, {name: '남원', lng: 127.39, offset: -30},
+                {name: '무주', lng: 127.66, offset: -29}, {name: '부안', lng: 126.73, offset: -33},
+                {name: '순창', lng: 127.14, offset: -31}, {name: '완주', lng: 127.16, offset: -31},
+                {name: '익산', lng: 126.96, offset: -32}, {name: '임실', lng: 127.29, offset: -31},
+                {name: '장수', lng: 127.52, offset: -30}, {name: '전주', lng: 127.15, offset: -31},
+                {name: '정읍', lng: 126.86, offset: -33}, {name: '진안', lng: 127.42, offset: -30}
             ],
-            '광주광역시': [{name: '광주', offset: -2}],
+            '광주광역시': [{name: '광주', lng: 126.85, offset: -33}],
             '경상남도': [
-                {name: '거제', offset: 4}, {name: '거창', offset: 2}, {name: '고성', offset: 2},
-                {name: '김해', offset: 6}, {name: '남해', offset: 2}, {name: '밀양', offset: 3},
-                {name: '사천', offset: -5}, {name: '산청', offset: 1}, {name: '양산', offset: 6},
-                {name: '의령', offset: 4}, {name: '진주', offset: -1}, {name: '창녕', offset: 2},
-                {name: '창원', offset: 4}, {name: '통영', offset: 4}, {name: '하동', offset: 1},
-                {name: '함안', offset: 3}, {name: '함양', offset: 2}, {name: '합천', offset: 2}
+                {name: '거제', lng: 128.62, offset: -25}, {name: '거창', lng: 127.91, offset: -28},
+                {name: '고성', lng: 128.32, offset: -27}, {name: '김해', lng: 128.89, offset: -24},
+                {name: '남해', lng: 127.89, offset: -28}, {name: '밀양', lng: 128.75, offset: -25},
+                {name: '사천', lng: 128.06, offset: -28}, {name: '산청', lng: 127.87, offset: -29},
+                {name: '양산', lng: 129.04, offset: -24}, {name: '의령', lng: 128.26, offset: -27},
+                {name: '진주', lng: 128.11, offset: -28}, {name: '창녕', lng: 128.49, offset: -26},
+                {name: '창원', lng: 128.68, offset: -25}, {name: '통영', lng: 128.43, offset: -26},
+                {name: '하동', lng: 127.75, offset: -29}, {name: '함안', lng: 128.41, offset: -26},
+                {name: '함양', lng: 127.73, offset: -29}, {name: '합천', lng: 128.17, offset: -27}
             ],
             '경상북도': [
-                {name: '경산', offset: 5}, {name: '경주', offset: 5}, {name: '고령', offset: 3},
-                {name: '구미', offset: 5}, {name: '군위', offset: 3}, {name: '김천', offset: 5},
-                {name: '문경', offset: 2}, {name: '봉화', offset: 2}, {name: '상주', offset: 2},
-                {name: '성주', offset: 1}, {name: '안동', offset: 4}, {name: '영덕', offset: 4},
-                {name: '영양', offset: 4}, {name: '영주', offset: 2}, {name: '영천', offset: 2},
-                {name: '예천', offset: 4}, {name: '울진', offset: 4}, {name: '의성', offset: 2},
-                {name: '청도', offset: 5}, {name: '청송', offset: 2}, {name: '칠곡', offset: 5},
-                {name: '포항', offset: 7}
+                {name: '경산', lng: 128.74, offset: -25}, {name: '경주', lng: 129.21, offset: -23},
+                {name: '고령', lng: 128.26, offset: -27}, {name: '구미', lng: 128.34, offset: -27},
+                {name: '군위', lng: 128.57, offset: -26}, {name: '김천', lng: 128.11, offset: -28},
+                {name: '문경', lng: 128.19, offset: -27}, {name: '봉화', lng: 128.73, offset: -25},
+                {name: '상주', lng: 128.16, offset: -27}, {name: '성주', lng: 128.28, offset: -27},
+                {name: '안동', lng: 128.73, offset: -25}, {name: '영덕', lng: 129.37, offset: -23},
+                {name: '영양', lng: 129.11, offset: -24}, {name: '영주', lng: 128.62, offset: -25},
+                {name: '영천', lng: 128.94, offset: -24}, {name: '예천', lng: 128.45, offset: -26},
+                {name: '울진', lng: 129.4, offset: -22}, {name: '의성', lng: 128.7, offset: -25},
+                {name: '청도', lng: 128.73, offset: -25}, {name: '청송', lng: 129.06, offset: -24},
+                {name: '칠곡', lng: 128.4, offset: -26}, {name: '포항', lng: 129.34, offset: -23}
             ],
-            '부산광역시': [{name: '부산', offset: 6}],
-            '대구광역시': [{name: '대구', offset: 5}],
-            '울산광역시': [{name: '울산', offset: 6}],
+            '부산광역시': [{name: '부산', lng: 129.08, offset: -24}],
+            '대구광역시': [{name: '대구', lng: 128.6, offset: -26}],
+            '울산광역시': [{name: '울산', lng: 129.31, offset: -23}],
             '제주특별자치도': [
-                {name: '서귀포', offset: -5}, {name: '제주', offset: -6}
+                {name: '서귀포', lng: 126.56, offset: -34}, {name: '제주', lng: 126.53, offset: -34}
             ],
             '기타도서': [
-                {name: '백령도', offset: -12}, {name: '연평도', offset: -8}, {name: '울릉도', offset: 13}
+                {name: '백령도', lng: 124.72, offset: -41}, {name: '연평도', lng: 125.7, offset: -37},
+                {name: '울릉도', lng: 130.91, offset: -16}
             ]
         };
+        
+        // 천간과 지지
+        const stems = ['갑', '을', '병', '정', '무', '기', '경', '신', '임', '계'];
+        const branches = ['자', '축', '인', '묘', '진', '사', '오', '미', '신', '유', '술', '해'];
+        
+        // 한자 매핑
+        const stemHanja = {
+            '갑': '甲', '을': '乙', '병': '丙', '정': '丁', '무': '戊',
+            '기': '己', '경': '庚', '신': '辛', '임': '壬', '계': '癸'
+        };
+        
+        const branchHanja = {
+            '자': '子', '축': '丑', '인': '寅', '묘': '卯', '진': '辰', '사': '巳',
+            '오': '午', '미': '未', '신': '申', '유': '酉', '술': '戌', '해': '亥'
+        };
+
+        // 오행
+        const stemElements = {
+            '갑': '木', '을': '木', '병': '火', '정': '火', '무': '土',
+            '기': '土', '경': '金', '신': '金', '임': '水', '계': '水'
+        };
+        
+        const branchElements = {
+            '자': '水', '축': '土', '인': '木', '묘': '木', '진': '土', '사': '火',
+            '오': '火', '미': '土', '신': '金', '유': '金', '술': '土', '해': '水'
+        };
+        
+        // 지지의 본기(本氣) 매핑
+        const branchMainStem = {
+            '자': '계', '축': '기', '인': '갑', '묘': '을', '진': '무', '사': '병',
+            '오': '정', '미': '기', '신': '경', '유': '신', '술': '무', '해': '임'
+        };
+        
+        // 절기 데이터 캐시
+        let solarTermsCache = {};
+        
+        // API로 24절기 정보 조회
+        async function fetchSolarTerms(year) {
+            if (solarTermsCache[year]) {
+                return solarTermsCache[year];
+            }
+            
+            const url = `https://apis.data.go.kr/B090041/openapi/service/SpcdeInfoService/get24DivisionsInfo?solYear=${year}&numOfRows=30&ServiceKey=${CONFIG.API_SERVICE_KEY}`;
+            
+            try {
+                const response = await fetch(url);
+                const text = await response.text();
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                
+                const items = xml.querySelectorAll('item');
+                const terms = [];
+                
+                items.forEach(item => {
+                    const dateName = item.querySelector('dateName')?.textContent;
+                    const locdate = item.querySelector('locdate')?.textContent;
+                    const kst = item.querySelector('kst')?.textContent?.trim();
+                    
+                    if (dateName && locdate) {
+                        const year = parseInt(locdate.substring(0, 4));
+                        const month = parseInt(locdate.substring(4, 6));
+                        const day = parseInt(locdate.substring(6, 8));
+                        
+                        let hour = 0, minute = 0;
+                        if (kst && kst.length >= 4) {
+                            hour = parseInt(kst.substring(0, 2)) || 0;
+                            minute = parseInt(kst.substring(2, 4)) || 0;
+                        }
+                        
+                        terms.push({
+                            name: dateName,
+                            year: year,
+                            month: month,
+                            day: day,
+                            hour: hour,
+                            minute: minute,
+                            date: new Date(year, month - 1, day, hour, minute)
+                        });
+                    }
+                });
+                
+                terms.sort((a, b) => a.date - b.date);
+                solarTermsCache[year] = terms;
+                return terms;
+            } catch (error) {
+                console.error('절기 API 호출 실패:', error);
+                throw error;
+            }
+        }
+        
+        function findSolarTerm(terms, termName) {
+            return terms.find(t => t.name === termName);
+        }
+        
+        function isBeforeSolarTerm(inputDate, solarTerm) {
+            if (!solarTerm) return false;
+            return inputDate < solarTerm.date;
+        }
+        
+        async function getYearPillarBySolarTerm(year, month, day, hour, minute) {
+            const inputDate = new Date(year, month - 1, day, hour, minute);
+            const terms = await fetchSolarTerms(year);
+            const ipchun = findSolarTerm(terms, '입춘');
+            
+            let actualYear = year;
+            if (ipchun && isBeforeSolarTerm(inputDate, ipchun)) {
+                actualYear = year - 1;
+            }
+            
+            let index = (actualYear - 1984) % 60;
+            if (index < 0) index += 60;
+            return {
+                stem: stems[index % 10],
+                branch: branches[index % 12],
+                actualYear: actualYear
+            };
+        }
+        
+        async function getMonthPillarBySolarTerm(year, month, day, hour, minute, yearStem) {
+            const inputDate = new Date(year, month - 1, day, hour, minute);
+            const currentYearTerms = await fetchSolarTerms(year);
+            const prevYearTerms = await fetchSolarTerms(year - 1);
+            
+            let monthBranchIdx = 1;
+            
+            if (month === 1) {
+                const sohan = findSolarTerm(currentYearTerms, '소한');
+                const ipchun = findSolarTerm(currentYearTerms, '입춘');
+                
+                if (sohan && isBeforeSolarTerm(inputDate, sohan)) {
+                    monthBranchIdx = 0;
+                } else if (ipchun && isBeforeSolarTerm(inputDate, ipchun)) {
+                    monthBranchIdx = 1;
+                } else {
+                    monthBranchIdx = 2;
+                }
+            } else if (month === 2) {
+                const ipchun = findSolarTerm(currentYearTerms, '입춘');
+                const gyeongchip = findSolarTerm(currentYearTerms, '경칩');
+                
+                if (ipchun && isBeforeSolarTerm(inputDate, ipchun)) {
+                    monthBranchIdx = 1;
+                } else if (gyeongchip && isBeforeSolarTerm(inputDate, gyeongchip)) {
+                    monthBranchIdx = 2;
+                } else {
+                    monthBranchIdx = 3;
+                }
+            } else if (month === 3) {
+                const gyeongchip = findSolarTerm(currentYearTerms, '경칩');
+                const cheongmyeong = findSolarTerm(currentYearTerms, '청명');
+                
+                if (gyeongchip && isBeforeSolarTerm(inputDate, gyeongchip)) {
+                    monthBranchIdx = 2;
+                } else if (cheongmyeong && isBeforeSolarTerm(inputDate, cheongmyeong)) {
+                    monthBranchIdx = 3;
+                } else {
+                    monthBranchIdx = 4;
+                }
+            } else if (month === 4) {
+                const cheongmyeong = findSolarTerm(currentYearTerms, '청명');
+                const ipha = findSolarTerm(currentYearTerms, '입하');
+                
+                if (cheongmyeong && isBeforeSolarTerm(inputDate, cheongmyeong)) {
+                    monthBranchIdx = 3;
+                } else if (ipha && isBeforeSolarTerm(inputDate, ipha)) {
+                    monthBranchIdx = 4;
+                } else {
+                    monthBranchIdx = 5;
+                }
+            } else if (month === 5) {
+                const ipha = findSolarTerm(currentYearTerms, '입하');
+                const mangjong = findSolarTerm(currentYearTerms, '망종');
+                
+                if (ipha && isBeforeSolarTerm(inputDate, ipha)) {
+                    monthBranchIdx = 4;
+                } else if (mangjong && isBeforeSolarTerm(inputDate, mangjong)) {
+                    monthBranchIdx = 5;
+                } else {
+                    monthBranchIdx = 6;
+                }
+            } else if (month === 6) {
+                const mangjong = findSolarTerm(currentYearTerms, '망종');
+                const soseo = findSolarTerm(currentYearTerms, '소서');
+                
+                if (mangjong && isBeforeSolarTerm(inputDate, mangjong)) {
+                    monthBranchIdx = 5;
+                } else if (soseo && isBeforeSolarTerm(inputDate, soseo)) {
+                    monthBranchIdx = 6;
+                } else {
+                    monthBranchIdx = 7;
+                }
+            } else if (month === 7) {
+                const soseo = findSolarTerm(currentYearTerms, '소서');
+                const ipchu = findSolarTerm(currentYearTerms, '입추');
+                
+                if (soseo && isBeforeSolarTerm(inputDate, soseo)) {
+                    monthBranchIdx = 6;
+                } else if (ipchu && isBeforeSolarTerm(inputDate, ipchu)) {
+                    monthBranchIdx = 7;
+                } else {
+                    monthBranchIdx = 8;
+                }
+            } else if (month === 8) {
+                const ipchu = findSolarTerm(currentYearTerms, '입추');
+                const baengno = findSolarTerm(currentYearTerms, '백로');
+                
+                if (ipchu && isBeforeSolarTerm(inputDate, ipchu)) {
+                    monthBranchIdx = 7;
+                } else if (baengno && isBeforeSolarTerm(inputDate, baengno)) {
+                    monthBranchIdx = 8;
+                } else {
+                    monthBranchIdx = 9;
+                }
+            } else if (month === 9) {
+                const baengno = findSolarTerm(currentYearTerms, '백로');
+                const hallo = findSolarTerm(currentYearTerms, '한로');
+                
+                if (baengno && isBeforeSolarTerm(inputDate, baengno)) {
+                    monthBranchIdx = 8;
+                } else if (hallo && isBeforeSolarTerm(inputDate, hallo)) {
+                    monthBranchIdx = 9;
+                } else {
+                    monthBranchIdx = 10;
+                }
+            } else if (month === 10) {
+                const hallo = findSolarTerm(currentYearTerms, '한로');
+                const ipdong = findSolarTerm(currentYearTerms, '입동');
+                
+                if (hallo && isBeforeSolarTerm(inputDate, hallo)) {
+                    monthBranchIdx = 9;
+                } else if (ipdong && isBeforeSolarTerm(inputDate, ipdong)) {
+                    monthBranchIdx = 10;
+                } else {
+                    monthBranchIdx = 11;
+                }
+            } else if (month === 11) {
+                const ipdong = findSolarTerm(currentYearTerms, '입동');
+                const daeseol = findSolarTerm(currentYearTerms, '대설');
+                
+                if (ipdong && isBeforeSolarTerm(inputDate, ipdong)) {
+                    monthBranchIdx = 10;
+                } else if (daeseol && isBeforeSolarTerm(inputDate, daeseol)) {
+                    monthBranchIdx = 11;
+                } else {
+                    monthBranchIdx = 0;
+                }
+            } else if (month === 12) {
+                const daeseol = findSolarTerm(currentYearTerms, '대설');
+                
+                if (daeseol && isBeforeSolarTerm(inputDate, daeseol)) {
+                    monthBranchIdx = 11;
+                } else {
+                    monthBranchIdx = 0;
+                }
+            }
+            
+            const yearStemIdx = stems.indexOf(yearStem);
+            const monthStemStarts = [2, 4, 6, 8, 0];
+            const startStemIdx = monthStemStarts[yearStemIdx % 5];
+            
+            let monthOffset = monthBranchIdx - 2;
+            if (monthOffset < 0) monthOffset += 12;
+            
+            const monthStemIdx = (startStemIdx + monthOffset) % 10;
+            
+            return {
+                stem: stems[monthStemIdx],
+                branch: branches[monthBranchIdx]
+            };
+        }
+        
+        function getDayPillar(year, month, day) {
+            let a = Math.floor((14 - month) / 12);
+            let y = year + 4800 - a;
+            let m = month + 12 * a - 3;
+            let jdn = day + Math.floor((153 * m + 2) / 5) + 365 * y + 
+                     Math.floor(y / 4) - Math.floor(y / 100) + 
+                     Math.floor(y / 400) - 32045;
+            const baseJdn = 2445731;
+            let daysSince = jdn - baseJdn;
+            let index = daysSince % 60;
+            if (index < 0) index += 60;
+            return {
+                stem: stems[index % 10],
+                branch: branches[index % 12]
+            };
+        }
+        
+        function getHourPillar(dayStem, hour, minute) {
+            let totalMinutes = hour * 60 + minute;
+            
+            if (totalMinutes >= 1410) {
+                totalMinutes = totalMinutes - 1440;
+            }
+            
+            let hourBranchIdx;
+            if (totalMinutes >= -30 && totalMinutes < 90) hourBranchIdx = 0;
+            else if (totalMinutes >= 90 && totalMinutes < 210) hourBranchIdx = 1;
+            else if (totalMinutes >= 210 && totalMinutes < 330) hourBranchIdx = 2;
+            else if (totalMinutes >= 330 && totalMinutes < 450) hourBranchIdx = 3;
+            else if (totalMinutes >= 450 && totalMinutes < 570) hourBranchIdx = 4;
+            else if (totalMinutes >= 570 && totalMinutes < 690) hourBranchIdx = 5;
+            else if (totalMinutes >= 690 && totalMinutes < 810) hourBranchIdx = 6;
+            else if (totalMinutes >= 810 && totalMinutes < 930) hourBranchIdx = 7;
+            else if (totalMinutes >= 930 && totalMinutes < 1050) hourBranchIdx = 8;
+            else if (totalMinutes >= 1050 && totalMinutes < 1170) hourBranchIdx = 9;
+            else if (totalMinutes >= 1170 && totalMinutes < 1290) hourBranchIdx = 10;
+            else hourBranchIdx = 11;
+            
+            const dayStemIdx = stems.indexOf(dayStem);
+            const hourStemStarts = [0, 2, 4, 6, 8, 0, 2, 4, 6, 8];
+            const hourStemIdx = (hourStemStarts[dayStemIdx] + hourBranchIdx) % 10;
+            
+            return {
+                stem: stems[hourStemIdx],
+                branch: branches[hourBranchIdx]
+            };
+        }
+        
+        // 십성 계산 (천간용)
+        function getSipsung(dayStem, targetStem) {
+            const stemToElement = {
+                '갑': 0, '을': 0,
+                '병': 1, '정': 1,
+                '무': 2, '기': 2,
+                '경': 3, '신': 3,
+                '임': 4, '계': 4
+            };
+            
+            const dayStemIdx = stems.indexOf(dayStem);
+            const targetStemIdx = stems.indexOf(targetStem);
+            
+            const dayYin = dayStemIdx % 2;
+            const targetYin = targetStemIdx % 2;
+            const sameYinYang = (dayYin === targetYin);
+            
+            const dayElement = stemToElement[dayStem];
+            const targetElement = stemToElement[targetStem];
+            
+            if (dayElement === targetElement) {
+                return sameYinYang ? '비견' : '겁재';
+            }
+            
+            const iGenerate = (dayElement + 1) % 5;
+            if (targetElement === iGenerate) {
+                return sameYinYang ? '식신' : '상관';
+            }
+            
+            const generatesMe = (dayElement + 4) % 5;
+            if (targetElement === generatesMe) {
+                return sameYinYang ? '편인' : '정인';
+            }
+            
+            const iControl = (dayElement + 2) % 5;
+            if (targetElement === iControl) {
+                return sameYinYang ? '편재' : '정재';
+            }
+            
+            const controlsMe = (dayElement + 3) % 5;
+            if (targetElement === controlsMe) {
+                return sameYinYang ? '편관' : '정관';
+            }
+            
+            return '-';
+        }
+        
+        // 지지 십성 계산 (지지의 본기 기준)
+        function getBranchSipsung(dayStem, branch) {
+            const mainStem = branchMainStem[branch];
+            if (!mainStem) return '-';
+            return getSipsung(dayStem, mainStem);
+        }
+        
+        // 12운성 계산 
+        function get12Unseong(dayStem, branch) {
+            const unseongNames = ['장생', '목욕', '관대', '건록', '제왕', '쇠', '병', '사', '묘', '절', '태', '양'];
+            
+            const unseongTable = {
+                '갑': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0],
+                '을': [6, 5, 4, 3, 2, 1, 0, 11, 10, 9, 8, 7],
+                '병': [3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2],
+                '정': [8, 7, 6, 5, 4, 3, 2, 1, 0, 11, 10, 9],
+                '무': [3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1, 2],
+                '기': [8, 7, 6, 5, 4, 3, 2, 1, 0, 11, 10, 9],
+                '경': [7, 8, 9, 10, 11, 0, 1, 2, 3, 4, 5, 6],
+                '신': [0, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+                '임': [9, 10, 11, 0, 1, 2, 3, 4, 5, 6, 7, 8],
+                '계': [2, 1, 0, 11, 10, 9, 8, 7, 6, 5, 4, 3]
+            };
+            
+            const branchIdx = branches.indexOf(branch);
+            if (branchIdx < 0) return '-';
+            
+            const table = unseongTable[dayStem];
+            if (!table) return '-';
+            
+            return unseongNames[table[branchIdx]];
+        }
         
         // 시간 모름 체크박스
         document.getElementById('unknownTime').addEventListener('change', function(e) {
@@ -496,141 +742,19 @@
             }
         });
         
-        // 천간과 지지
-        const stems = ['갑', '을', '병', '정', '무', '기', '경', '신', '임', '계'];
-        const branches = ['자', '축', '인', '묘', '진', '사', '오', '미', '신', '유', '술', '해'];
-        
-        // 오행
-        const stemElements = {
-            '갑': '木', '을': '木', '병': '火', '정': '火', '무': '土',
-            '기': '土', '경': '金', '신': '金', '임': '水', '계': '水'
-        };
-        
-        const branchElements = {
-            '자': '水', '축': '土', '인': '木', '묘': '木', '진': '土', '사': '火',
-            '오': '火', '미': '土', '신': '金', '유': '金', '술': '土', '해': '水'
-        };
-        
-        // 십성 (일간 기준)
-        function getSipsung(dayStem, targetStem) {
-            const dayStemIdx = stems.indexOf(dayStem);
-            const targetStemIdx = stems.indexOf(targetStem);
-            
-            const diff = (targetStemIdx - dayStemIdx + 10) % 10;
-            const dayYinYang = dayStemIdx % 2;
-            const targetYinYang = targetStemIdx % 2;
-            const sameSex = (dayYinYang === targetYinYang);
-            
-            if (diff === 0) return '비견';
-            if (diff === 1) return sameSex ? '겁재' : '겁재';
-            if (diff === 2) return sameSex ? '식신' : '상관';
-            if (diff === 3) return sameSex ? '상관' : '식신';
-            if (diff === 4) return sameSex ? '편재' : '정재';
-            if (diff === 5) return sameSex ? '정재' : '편재';
-            if (diff === 6) return sameSex ? '편관' : '정관';
-            if (diff === 7) return sameSex ? '정관' : '편관';
-            if (diff === 8) return sameSex ? '편인' : '정인';
-            if (diff === 9) return sameSex ? '정인' : '편인';
-            
-            return '-';
-        }
-        
-        // 12운성
-        function get12Unseong(dayStem, branch) {
-            const unseongTable = {
-                '갑': ['해', '자', '축', '인', '묘', '진', '사', '오', '미', '신', '유', '술'],
-                '을': ['오', '미', '신', '유', '술', '해', '자', '축', '인', '묘', '진', '사'],
-                '병': ['인', '묘', '진', '사', '오', '미', '신', '유', '술', '해', '자', '축'],
-                '정': ['유', '술', '해', '자', '축', '인', '묘', '진', '사', '오', '미', '신'],
-                '무': ['인', '묘', '진', '사', '오', '미', '신', '유', '술', '해', '자', '축'],
-                '기': ['유', '술', '해', '자', '축', '인', '묘', '진', '사', '오', '미', '신'],
-                '경': ['사', '오', '미', '신', '유', '술', '해', '자', '축', '인', '묘', '진'],
-                '신': ['자', '축', '인', '묘', '진', '사', '오', '미', '신', '유', '술', '해'],
-                '임': ['신', '유', '술', '해', '자', '축', '인', '묘', '진', '사', '오', '미'],
-                '계': ['묘', '진', '사', '오', '미', '신', '유', '술', '해', '자', '축', '인']
-            };
-            
-            const unseongNames = ['장생', '목욕', '관대', '건록', '제왕', '쇠', '병', '사', '묘', '절', '태', '양'];
-            
-            const order = unseongTable[dayStem];
-            if (!order) return '-';
-            
-            const idx = order.indexOf(branch);
-            return idx >= 0 ? unseongNames[idx] : '-';
-        }
-        
-        function getSixtyJiazi(num) {
-            return stems[num % 10] + branches[num % 12];
-        }
-        
-        function getYearPillar(year) {
-            let index = (year - 1984) % 60;
-            if (index < 0) index += 60;
-            return getSixtyJiazi(index);
-        }
-        
-        function getMonthPillar(year, month) {
-            const yearStem = (year - 4) % 10;
-            const monthStems = [
-                [4, 6, 8, 0, 2, 4, 6, 8, 0, 2, 4, 6],
-                [6, 8, 0, 2, 4, 6, 8, 0, 2, 4, 6, 8],
-                [8, 0, 2, 4, 6, 8, 0, 2, 4, 6, 8, 0],
-                [0, 2, 4, 6, 8, 0, 2, 4, 6, 8, 0, 2],
-                [2, 4, 6, 8, 0, 2, 4, 6, 8, 0, 2, 4]
-            ];
-            const monthBranches = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0, 1];
-            const stemGroup = Math.floor(yearStem / 2);
-            const stemIdx = monthStems[stemGroup][month - 1];
-            const branchIdx = monthBranches[month - 1];
-            return stems[stemIdx] + branches[branchIdx];
-        }
-        
-        function getDayPillar(year, month, day) {
-            let a = Math.floor((14 - month) / 12);
-            let y = year + 4800 - a;
-            let m = month + 12 * a - 3;
-            let jdn = day + Math.floor((153 * m + 2) / 5) + 365 * y + 
-                     Math.floor(y / 4) - Math.floor(y / 100) + 
-                     Math.floor(y / 400) - 32045;
-            const baseJdn = 2445724;
-            let daysSince = jdn - baseJdn;
-            let index = daysSince % 60;
-            if (index < 0) index += 60;
-            return getSixtyJiazi(index);
-        }
-        
-        function getHourPillar(dayPillar, hour, minute) {
-            let totalMinutes = hour * 60 + minute;
-            
-            if (totalMinutes >= 1410) {
-                totalMinutes = totalMinutes - 1440;
-            }
-            
-            let hourBranchIdx;
-            if (totalMinutes >= -30 && totalMinutes < 90) hourBranchIdx = 0;
-            else if (totalMinutes >= 90 && totalMinutes < 210) hourBranchIdx = 1;
-            else if (totalMinutes >= 210 && totalMinutes < 330) hourBranchIdx = 2;
-            else if (totalMinutes >= 330 && totalMinutes < 450) hourBranchIdx = 3;
-            else if (totalMinutes >= 450 && totalMinutes < 570) hourBranchIdx = 4;
-            else if (totalMinutes >= 570 && totalMinutes < 690) hourBranchIdx = 5;
-            else if (totalMinutes >= 690 && totalMinutes < 810) hourBranchIdx = 6;
-            else if (totalMinutes >= 810 && totalMinutes < 930) hourBranchIdx = 7;
-            else if (totalMinutes >= 930 && totalMinutes < 1050) hourBranchIdx = 8;
-            else if (totalMinutes >= 1050 && totalMinutes < 1170) hourBranchIdx = 9;
-            else if (totalMinutes >= 1170 && totalMinutes < 1290) hourBranchIdx = 10;
-            else hourBranchIdx = 11;
-            
-            const dayStem = dayPillar.charAt(0);
-            const dayStemIdx = stems.indexOf(dayStem);
-            const hourStemStarts = [0, 2, 4, 6, 8, 0, 2, 4, 6, 8];
-            const hourStemIdx = (hourStemStarts[dayStemIdx] + hourBranchIdx) % 10;
-            
-            return stems[hourStemIdx] + branches[hourBranchIdx];
-        }
-        
         // 폼 제출
-        document.getElementById('sajuForm').addEventListener('submit', function(e) {
+        document.getElementById('sajuForm').addEventListener('submit', async function(e) {
             e.preventDefault();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const loadingMsg = document.getElementById('loadingMsg');
+            const errorMsg = document.getElementById('errorMsg');
+            const result = document.getElementById('result');
+            
+            submitBtn.disabled = true;
+            loadingMsg.style.display = 'block';
+            errorMsg.style.display = 'none';
+            result.classList.remove('show');
             
             try {
                 const name = document.getElementById('name').value;
@@ -643,8 +767,7 @@
                 
                 const cityValue = document.getElementById('city').value;
                 if (!cityValue) {
-                    alert('도시를 선택해주세요.');
-                    return;
+                    throw new Error('도시를 선택해주세요.');
                 }
                 
                 const [timeZoneStr, cityName] = cityValue.split(':');
@@ -663,21 +786,23 @@
                 if (hour >= 24) hour -= 24;
                 if (hour < 0) hour += 24;
                 
-                // 사주 계산
-                const yearPillar = getYearPillar(year);
-                const monthPillar = getMonthPillar(year, month);
-                const dayPillar = getDayPillar(year, month, day);
-                const hourPillar = getHourPillar(dayPillar, hour, minute);
+                // 자시 처리
+                let adjustedYear = year;
+                let adjustedMonth = month;
+                let adjustedDay = day;
                 
-                // 천간지지 분리
-                const yearStem = yearPillar.charAt(0);
-                const yearBranch = yearPillar.charAt(1);
-                const monthStem = monthPillar.charAt(0);
-                const monthBranch = monthPillar.charAt(1);
-                const dayStem = dayPillar.charAt(0);
-                const dayBranch = dayPillar.charAt(1);
-                const hourStem = hourPillar.charAt(0);
-                const hourBranch = hourPillar.charAt(1);
+                if (hour === 23 && minute >= 30) {
+                    const nextDate = new Date(year, month - 1, day + 1);
+                    adjustedYear = nextDate.getFullYear();
+                    adjustedMonth = nextDate.getMonth() + 1;
+                    adjustedDay = nextDate.getDate();
+                }
+                
+                // 절기 기반 사주 계산
+                const yearPillar = await getYearPillarBySolarTerm(adjustedYear, adjustedMonth, adjustedDay, hour, minute);
+                const monthPillar = await getMonthPillarBySolarTerm(adjustedYear, adjustedMonth, adjustedDay, hour, minute, yearPillar.stem);
+                const dayPillar = getDayPillar(adjustedYear, adjustedMonth, adjustedDay);
+                const hourPillar = getHourPillar(dayPillar.stem, hour, minute);
                 
                 // 결과 표시
                 const genderText = gender === 'male' ? '남자' : '여자';
@@ -687,43 +812,44 @@
                     `<strong>${name}</strong>님 (${genderText}) | 양력 ${year}년 ${month}월 ${day}일 ${hour}시 ${minute}분 | ${cityName}${timeZoneText}`;
                 
                 // 천간
-                document.getElementById('yearStem').textContent = yearStem;
-                document.getElementById('monthStem').textContent = monthStem;
-                document.getElementById('dayStem').textContent = dayStem;
-                document.getElementById('hourStem').textContent = hourStem;
-                
+                document.getElementById('yearStem').textContent = yearPillar.stem + stemHanja[yearPillar.stem];
+                document.getElementById('monthStem').textContent = monthPillar.stem + stemHanja[monthPillar.stem];
+                document.getElementById('dayStem').textContent = dayPillar.stem + stemHanja[dayPillar.stem];
+                document.getElementById('hourStem').textContent = hourPillar.stem + stemHanja[hourPillar.stem];
+            
                 // 지지
-                document.getElementById('yearBranch').textContent = yearBranch;
-                document.getElementById('monthBranch').textContent = monthBranch;
-                document.getElementById('dayBranch').textContent = dayBranch;
-                document.getElementById('hourBranch').textContent = hourBranch;
+                document.getElementById('yearBranch').textContent = yearPillar.branch + branchHanja[yearPillar.branch];
+                document.getElementById('monthBranch').textContent = monthPillar.branch + branchHanja[monthPillar.branch];
+                document.getElementById('dayBranch').textContent = dayPillar.branch + branchHanja[dayPillar.branch];
+                document.getElementById('hourBranch').textContent = hourPillar.branch + branchHanja[hourPillar.branch];
                 
-                // 오행
-                document.getElementById('yearElement').textContent = 
-                    `${stemElements[yearStem]} / ${branchElements[yearBranch]}`;
-                document.getElementById('monthElement').textContent = 
-                    `${stemElements[monthStem]} / ${branchElements[monthBranch]}`;
-                document.getElementById('dayElement').textContent = 
-                    `${stemElements[dayStem]} / ${branchElements[dayBranch]}`;
-                document.getElementById('hourElement').textContent = 
-                    `${stemElements[hourStem]} / ${branchElements[hourBranch]}`;
+                // 천간 십성
+                document.getElementById('yearStemSipsung').textContent = getSipsung(dayPillar.stem, yearPillar.stem);
+                document.getElementById('monthStemSipsung').textContent = getSipsung(dayPillar.stem, monthPillar.stem);
+                document.getElementById('hourStemSipsung').textContent = getSipsung(dayPillar.stem, hourPillar.stem);
                 
-                // 십성
-                document.getElementById('yearSipsung').textContent = getSipsung(dayStem, yearStem);
-                document.getElementById('monthSipsung').textContent = getSipsung(dayStem, monthStem);
-                document.getElementById('hourSipsung').textContent = getSipsung(dayStem, hourStem);
+                // 지지 십성 (본기 기준)
+                document.getElementById('yearBranchSipsung').textContent = getBranchSipsung(dayPillar.stem, yearPillar.branch);
+                document.getElementById('monthBranchSipsung').textContent = getBranchSipsung(dayPillar.stem, monthPillar.branch);
+                document.getElementById('dayBranchSipsung').textContent = getBranchSipsung(dayPillar.stem, dayPillar.branch);
+                document.getElementById('hourBranchSipsung').textContent = getBranchSipsung(dayPillar.stem, hourPillar.branch);
                 
                 // 12운성
-                document.getElementById('year12').textContent = get12Unseong(dayStem, yearBranch);
-                document.getElementById('month12').textContent = get12Unseong(dayStem, monthBranch);
-                document.getElementById('day12').textContent = get12Unseong(dayStem, dayBranch);
-                document.getElementById('hour12').textContent = get12Unseong(dayStem, hourBranch);
+                document.getElementById('year12').textContent = get12Unseong(dayPillar.stem, yearPillar.branch);
+                document.getElementById('month12').textContent = get12Unseong(dayPillar.stem, monthPillar.branch);
+                document.getElementById('day12').textContent = get12Unseong(dayPillar.stem, dayPillar.branch);
+                document.getElementById('hour12').textContent = get12Unseong(dayPillar.stem, hourPillar.branch);
                 
-                document.getElementById('result').classList.add('show');
-                document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+                loadingMsg.style.display = 'none';
+                result.classList.add('show');
+                result.scrollIntoView({ behavior: 'smooth' });
                 
             } catch (error) {
-                alert('계산 중 오류가 발생했습니다: ' + error.message);
+                loadingMsg.style.display = 'none';
+                errorMsg.textContent = '오류: ' + error.message;
+                errorMsg.style.display = 'block';
+            } finally {
+                submitBtn.disabled = false;
             }
         });
     </script>
